@@ -1,19 +1,19 @@
 <template>
   <div class="product">
     <div class="head">
-      <img class="image" src="/client/assets/images/product1.jpeg" />
-      <div class="time">25-30 <span class="min">min.</span></div>
+      <img class="image" :src="product.image" />
+      <div class="time">{{product.time}}</div>
     </div>
     <div class="body">
       <div class="title">
-        <span> Bagel Story </span>
+        <span> {{product.name}} </span>
+        
       </div>
 
       <div class="properties d-flex">
-        <div class="rating d-flex"><Star class="star" /><span>4.7</span></div>
-        <div>Cafes</div>
-        <div>Creperies</div>
-        <div>$</div>
+        <div class="rating d-flex"><Star class="star" /><span>{{product.qualification}} </span></div>
+        <div>{{product.category.name}} </div>
+        <div>$ {{product.price}} </div>
       </div>
     </div>
   </div>
@@ -25,10 +25,19 @@ export default {
   components: {
     Star,
   },
-
-  data() {
-    return {};
+  props: {
+    product: {
+      default: {},
+      type: Object,
+    },
+    
   },
+  data() {
+    return {
+      item:{}
+    };
+  },
+ 
 };
 </script>
                   

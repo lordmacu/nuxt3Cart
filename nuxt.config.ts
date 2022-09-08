@@ -1,7 +1,7 @@
 import { defineNuxtConfig } from 'nuxt'
 
 export default defineNuxtConfig({
-  modules: ['bootstrap-vue-3/nuxt','@pinia/nuxt'],
+  modules: ['bootstrap-vue-3/nuxt', '@pinia/nuxt'],
   css: ['bootstrap/dist/css/bootstrap.css', '~/client/assets/css/main.scss'],
   head: {
     link: [
@@ -11,5 +11,8 @@ export default defineNuxtConfig({
         href: 'https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap'
       }
     ],
-  }
+  },
+  publicRuntimeConfig: {
+    API_BASE_URL: process.env.APP_SERVER_URL
+},
 })
