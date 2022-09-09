@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
-    "@pinia/nuxt": "^0.4.1",
+    "@pinia/nuxt": "^0.4.2",
     "@popperjs/core": "^2.11.6",
     "add": "^2.0.6",
     "bootstrap": "^5.2.0",
