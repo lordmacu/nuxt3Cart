@@ -1,18 +1,23 @@
 <template>
+
+  <Head>
+    <Title>Nuxt Cart Test</Title>
+    <Meta name="description" content="super cart in nuxt" />
+  </Head>
   <div class="container-xxl">
     <b-row>
-      <b-col lg="9" class="content" v-if="storeCart.isContent" >
-        <Menu />   
-        <Home/>
+      <b-col lg="9" class="content" v-if="storeCart.isContent">
+        <Menu />
+        <Home />
       </b-col>
       <Cart v-if="storeCart.isCart" />
-      <Loading v-if="storeIndex.isLoading"/>
+      <Loading v-if="storeIndex.isLoading" />
     </b-row>
   </div>
 </template>
 
 <script>
- 
+
 import Cart from "./client/components/cart/cart.vue";
 import Menu from "./client/components/menu/menu.vue";
 import Home from "./client/components/home/home.vue";
@@ -27,23 +32,23 @@ export default {
     Home,
     Loading
   },
-  setup(){
+  setup() {
     const storeCart = useCartStore()
     const storeIndex = useIndexStore()
-    return { storeCart,storeIndex }
+    return { storeCart, storeIndex }
   },
-  mounted(){
+  mounted() {
     var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-    if (isMobile) { 
+    if (isMobile) {
       this.storeCart.forceCart(false);
       this.storeCart.forceContent(true);
 
-    }else{
+    } else {
       this.storeCart.forceCart(true);
       this.storeCart.forceContent(true);
     }
-    
+
     this.storeCart.checkCart(isMobile);
 
   },
@@ -52,7 +57,6 @@ export default {
 
 
 <style lang="scss">
-
 .no-padding-right {
   padding-right: 0px;
 }
