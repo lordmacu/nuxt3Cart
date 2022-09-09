@@ -6,6 +6,7 @@
         <Home/>
       </b-col>
       <Cart v-if="storeCart.isCart" />
+      <Loading v-if="storeIndex.isLoading"/>
     </b-row>
   </div>
 </template>
@@ -15,6 +16,7 @@
 import Cart from "./client/components/cart/cart.vue";
 import Menu from "./client/components/menu/menu.vue";
 import Home from "./client/components/home/home.vue";
+import Loading from "./client/components/helpers/loading.vue";
 import { useCartStore } from '@/client/store/cart'
 import { useIndexStore } from '@/client/store/index'
 
@@ -22,7 +24,8 @@ export default {
   components: {
     Menu,
     Cart,
-    Home
+    Home,
+    Loading
   },
   setup(){
     const storeCart = useCartStore()

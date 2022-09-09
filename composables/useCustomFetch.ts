@@ -1,5 +1,7 @@
-export const useMyFetch = (request, opts) => {
+export const useFetchGet = async (url, opts) => {
     const config = useRuntimeConfig()
-    console.log(config.public);
-    return useFetch(() => request, { baseURL: config.public.apiBase, ...opts })
+ 
+    const requestFetch = await fetch(config.public.API_BASE_URL+url)
+    const response = await requestFetch.json();
+    return response;
   }

@@ -1,5 +1,5 @@
 <template>
-  <div class="product">
+  <div class="product" @click="addToCart">
     <div class="head">
       <img class="image" :src="product.image" />
       <div class="time">{{product.time}}</div>
@@ -20,6 +20,8 @@
 </template>
 <script>
 import Star from "../../../images/star.vue";
+import { useCartStore } from '@/client/store/cart'
+import { useIndexStore } from '@/client/store/index'
 
 export default {
   components: {
@@ -37,6 +39,22 @@ export default {
       item:{}
     };
   },
+  setup(){
+    const storeCart = useCartStore()
+    const storeIndex = useIndexStore()
+
+    return { storeCart, storeIndex }
+  },
+  methods:{
+    async addToCart(){
+      this.storeIndex.setLoading(true);
+      
+      await this.storeCart.addCart(this.product.id);
+      await this.storeCart.getCart();
+      this.storeIndex.setLoading(false);
+
+    }
+  }
  
 };
 </script>
@@ -45,6 +63,7 @@ export default {
 .product {
   margin-bottom: 45px;
   border-radius: 20px;
+  cursor: pointer;
 
  
   .head {

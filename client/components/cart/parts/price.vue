@@ -4,21 +4,48 @@
       <span class="total">Total:</span>
     </b-col>
     <b-col class="justify-content-center align-self-center outer-price">
-      <span class="price">$25.97</span>
+      <span class="price">${{storeCart.total}}</span>
+     
     </b-col>
   </b-row>
 </template>
-  <script>
- 
+<script>
+import { useCartStore } from '@/client/store/cart'
+
 export default {
-  components: {  },
+  components: {},
   data() {
-    return {};
+    return {
+      total: 0
+    };
+  },
+  setup() {
+    const storeCart = useCartStore()
+
+
+
+    watch(
+      () => storeCart.products,
+      (newValue, oldValue) => {
+
+
+        const total= newValue.reduce((n, product) => {
+
+          return n + parseFloat(product.product.price);
+        }, 0)
+
+        storeCart.setTotal(total.toFixed(2))
+
+      },
+      { deep: true }
+    )
+
+    return { storeCart }
   },
 };
 </script>
             
-  <style lang="scss">
+<style lang="scss">
 .total-price {
   position: relative;
 
@@ -35,6 +62,7 @@ export default {
     font-size: 18px;
     font-weight: 600;
   }
+
   .price {
     font-size: 25px;
     font-weight: 700;

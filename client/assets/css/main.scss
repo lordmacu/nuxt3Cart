@@ -68,6 +68,27 @@ body {
 
 }
 
+.loading{
+  position: fixed;
+  width: 100%;
+  z-index: 100000;
+  height: 100%;
+  background: rgb(255 255 255 / 72%);
+  display: flex;
+  justify-content: center;
+  img{
+    width: 150px;
+    height: 150px;
+    margin: auto;
+
+    border-radius: 80px;
+  }
+}
+
+.no-products{
+  text-align: center;
+}
+
 .no-padding {
   padding: 0px;
 }
@@ -178,6 +199,7 @@ body {
     }
 
     .products {
+      cursor: pointer;
       margin-top: 55px;
     }
 
@@ -229,6 +251,7 @@ body {
       }
 
       .product-item {
+        cursor: pointer;
         .description {
           font-size: 13px;
             line-height: 17px;

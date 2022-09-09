@@ -10,6 +10,7 @@
       <b-row class="checkout-actions">
         <b-col lg="5" cols="5" class="counter justify-content-center align-self-center">
           <p>Persons</p>
+
           <div class="d-flex actions">
             <button><Minus class="minus" /></button>
             <span class="quantity">0</span>
@@ -31,7 +32,7 @@ import Price from "./parts/price.vue";
 import ArrowRight from "../images/arrowRight.vue";
 import Minus from "../images/minus.vue";
 import Plus from "../images/plus.vue";
-
+ 
 export default {
   components: {
     Address,
@@ -43,8 +44,11 @@ export default {
     Plus,
   },
   data() {
-    return {};
-  },
+    return {
+        
+    };
+  }
+ 
 };
 </script>
     
@@ -54,6 +58,8 @@ export default {
   border-left: 1px solid #f3f3f3;
   height: 100vh;
   padding-left: 45px;
+  position: fixed;
+  right: 0px;
 
   .avatar {
     padding-right: 0px;

@@ -1,15 +1,21 @@
 <template>
   <div class="counter-cart d-flex align-items-center justify-content-center">
-    3
+    {{storeCart.products.length}}
   </div>
 </template>
 <script>
 import Avatar from "../../images/avatar.vue";
+import { useCartStore } from '@/client/store/cart'
 
 export default {
   components: { Avatar },
   data() {
     return {};
+  },
+  setup() {
+    const storeCart = useCartStore()
+
+    return { storeCart }
   },
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <b-row class="product-item">
     <b-col lg="4" cols="4">
-      <img class="image" src="/client/assets/images/hamburger.jpeg" />
+      <img class="image" :src="product.product.image" />
     </b-col>
     <b-col lg="5"  cols="6" class="description  justify-content-center align-self-center">
       <b-row class="">
@@ -13,17 +13,24 @@
           <span class="quantity">1</span>
           <span class="multiplier">x</span></b-col
         >
-        <b-col lg="8" cols="9" class="name"><span>Beach BBQBurger</span></b-col>
+        <b-col lg="8" cols="9" class="name"><span>{{product.product.name}}</span></b-col>
       </b-row>
     </b-col>
     <b-col lg="3"  cols="2" class="justify-content-center align-self-center price">
-      <span>$14.99</span>
+      <span>${{product.product.price}}</span>
     </b-col>
   </b-row>
 </template>
 <script>
 export default {
   components: {},
+  props: {
+    product: {
+      default: {},
+      type: Object,
+    },
+    
+  },
   data() {
     return {};
   },
