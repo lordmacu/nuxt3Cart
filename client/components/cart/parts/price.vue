@@ -31,7 +31,7 @@ export default {
 
         const total= newValue.reduce((n, product) => {
 
-          return n + parseFloat(product.product.price);
+          return n + parseFloat(product.p1_price);
         }, 0)
 
         storeCart.setTotal(total.toFixed(2))
