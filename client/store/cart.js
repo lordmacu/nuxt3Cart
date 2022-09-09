@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 
 export const useCartStore = defineStore('cart', {
-  state: () => ({ isCart: false, isContent: true, products: [], cartId: {}, total: 0 }),
+  state: () => ({ isCart: false, isContent: true, products: [], cartId: {}, total: 0, persons:0 }),
 
   actions: {
 
@@ -16,6 +16,18 @@ export const useCartStore = defineStore('cart', {
     },
     forceContent(value) {
       this.isContent = value
+    },
+    addPerson() {
+      this.persons++
+    },
+    clearCart() {
+      this.products=[]
+    },
+    removePerson() {
+      if(this.persons > 0){
+        this.persons--
+      }
+     
     },
     checkCart(mobile) {
       console.log(mobile);
